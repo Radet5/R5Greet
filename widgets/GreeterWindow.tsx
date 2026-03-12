@@ -6,7 +6,26 @@ import Clock from "./Clock"
 import LoginPanel from "./LoginPanel"
 import PowerButton from "./PowerButton"
 
-export default function GreeterWindow({ config }: { config: R5GreetConfig }) {
+function BackgroundWindow({ config }: { config: R5GreetConfig }) {
+  const { TOP, BOTTOM, LEFT, RIGHT } = Astal.WindowAnchor
+
+  return (
+    <window
+      name="r5greet-bg"
+      namespace="r5greet-bg"
+      application={app}
+      anchor={TOP | BOTTOM | LEFT | RIGHT}
+      exclusivity={Astal.Exclusivity.IGNORE}
+      keymode={Astal.Keymode.NONE}
+      layer={Astal.Layer.BOTTOM}
+      $={(self: any) => { self.visible = true }}
+    >
+      <Background config={config} />
+    </window>
+  )
+}
+
+function PanelsWindow({ config }: { config: R5GreetConfig }) {
   const { TOP, BOTTOM, LEFT, RIGHT } = Astal.WindowAnchor
 
   return (
@@ -21,11 +40,16 @@ export default function GreeterWindow({ config }: { config: R5GreetConfig }) {
       keymode={Astal.Keymode.EXCLUSIVE}
     >
       <overlay>
-        <Background config={config} />
+        <box hexpand vexpand />
         <Clock $type="overlay" config={config} />
         <LoginPanel $type="overlay" config={config} />
         <PowerButton $type="overlay" command={config.commands.poweroff} />
       </overlay>
     </window>
   )
+}
+
+export default function GreeterWindow({ config }: { config: R5GreetConfig }) {
+  BackgroundWindow({ config })
+  PanelsWindow({ config })
 }
