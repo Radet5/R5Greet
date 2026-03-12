@@ -4,7 +4,7 @@ import { type R5GreetConfig } from "../config/types"
 import Background from "./Background"
 import Clock from "./Clock"
 import LoginPanel from "./LoginPanel"
-import PowerButton from "./PowerButton"
+import PowerMenu from "./PowerMenu"
 
 function BackgroundWindow({ config }: { config: R5GreetConfig }) {
   const { TOP, BOTTOM, LEFT, RIGHT } = Astal.WindowAnchor
@@ -43,7 +43,7 @@ function PanelsWindow({ config }: { config: R5GreetConfig }) {
         <box hexpand vexpand />
         <Clock $type="overlay" config={config} />
         <LoginPanel $type="overlay" config={config} />
-        <PowerButton $type="overlay" command={config.commands.poweroff} />
+        <PowerMenu $type="overlay" config={config} />
       </overlay>
     </window>
   )

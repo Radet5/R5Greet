@@ -10,6 +10,18 @@ function parseTOML(text: string): Record<string, any> {
     const line = raw.trim()
     if (!line || line.startsWith("#")) continue
 
+    // Array-of-tables: [[key]]
+    const arrayTableMatch = line.match(/^\[\[(.+)\]\]$/)
+    if (arrayTableMatch) {
+      const key = arrayTableMatch[1]
+      if (!Array.isArray(result[key])) result[key] = []
+      const entry: Record<string, any> = {}
+      result[key].push(entry)
+      current = entry
+      continue
+    }
+
+    // Table: [key]
     const tableMatch = line.match(/^\[(.+)\]$/)
     if (tableMatch) {
       const key = tableMatch[1]
@@ -72,7 +84,20 @@ export function loadConfig(): R5GreetConfig {
         if (ok && contents) {
           const text = new TextDecoder().decode(contents)
           const parsed = parseTOML(text)
-          return deepMerge(defaults, parsed) as R5GreetConfig
+          const merged = deepMerge(defaults, parsed) as R5GreetConfig
+
+          // Backwards compat: migrate old [commands] to [[actions]]
+          if (parsed.commands?.poweroff && !parsed.actions) {
+            merged.actions = [
+              {
+                name: "Power Off",
+                icon: "system-shutdown-symbolic",
+                command: parsed.commands.poweroff,
+              },
+            ]
+          }
+
+          return merged
         }
       } catch (e) {
         console.warn(`Failed to load config from ${path}:`, e)

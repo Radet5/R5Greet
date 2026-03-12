@@ -1,55 +1,55 @@
+import GLib from "gi://GLib"
 import app from "ags/gtk4/app"
 import style from "./style.css"
 import { loadConfig } from "./config/loader"
 import { type R5GreetConfig } from "./config/types"
 import GreeterWindow from "./widgets/GreeterWindow"
 
+function loadCustomCss(value: string): string {
+  if (value.startsWith("/") || value.startsWith("~")) {
+    const path = value.startsWith("~")
+      ? value.replace("~", GLib.get_home_dir() ?? "")
+      : value
+    try {
+      const [ok, contents] = GLib.file_get_contents(path)
+      if (ok && contents) return new TextDecoder().decode(contents)
+    } catch (e) {
+      console.warn("Failed to load custom_css from", path, e)
+    }
+    return ""
+  }
+  return value
+}
+
 function generateThemeCss(theme: R5GreetConfig["theme"]): string {
-  return `
-.glass-panel {
-  background-color: ${theme.panel_bg};
-  border-right: 1px solid ${theme.panel_border};
-  border-bottom: 1px solid ${theme.panel_border};
-  border-radius: 10px;
-  box-shadow: 6px 6px 4px rgba(0, 0, 0, 0.25);
-}
-
-.input-field {
-  background-color: ${theme.input_bg};
-  border-right: 1px solid ${theme.input_border};
-  border-bottom: 1px solid ${theme.input_border};
-  border-radius: 10px;
-}
-
-.clock-text {
-  color: ${theme.text_color};
-  font-family: "${theme.clock_font_family}";
-  font-size: 40px;
-  font-weight: 500;
-}
-
-.username-display {
-  color: ${theme.text_color};
-  font-family: "${theme.font_family}";
-  font-size: 40px;
-  font-weight: 500;
-}
-
-.power-icon {
-  color: ${theme.text_color};
-}
-
-.error-label {
-  color: #ff6b6b;
+  const vars = `
+:root {
+  --panel-bg: ${theme.panel_bg};
+  --panel-border: ${theme.panel_border};
+  --panel-radius: ${theme.panel_radius};
+  --panel-shadow: ${theme.panel_shadow};
+  --input-bg: ${theme.input_bg};
+  --input-border: ${theme.input_border};
+  --input-radius: ${theme.input_radius};
+  --text-color: ${theme.text_color};
+  --font-family: ${theme.font_family};
+  --font-size: ${theme.font_size};
+  --font-weight: ${theme.font_weight};
+  --clock-font-family: ${theme.clock_font_family};
+  --clock-font-size: ${theme.clock_font_size};
+  --clock-font-weight: ${theme.clock_font_weight};
+  --error-color: ${theme.error_color};
 }
 `
+  const customCss = theme.custom_css ? loadCustomCss(theme.custom_css) : ""
+  return vars + customCss
 }
 
 const config = loadConfig()
 
 app.start({
   instanceName: "r5greet",
-  css: style + generateThemeCss(config.theme),
+  css: generateThemeCss(config.theme) + style,
   main() {
     GreeterWindow({ config })
   },

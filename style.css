@@ -5,9 +5,14 @@ window {
   background-color: transparent;
 }
 
-/* Glass panels — base */
+/* Glass panels */
 .glass-panel {
   padding: 20px;
+  background: var(--panel-bg);
+  border-right: 1px solid var(--panel-border);
+  border-bottom: 1px solid var(--panel-border);
+  border-radius: var(--panel-radius);
+  box-shadow: var(--panel-shadow);
 }
 
 /* Clock panel */
@@ -19,13 +24,17 @@ window {
 
 .clock-text {
   margin-top: 6px;
+  color: var(--text-color);
+  font-family: var(--clock-font-family);
+  font-size: var(--clock-font-size);
+  font-weight: var(--clock-font-weight);
 }
 
 /* Login panel */
 .login-panel {
   min-width: 500px;
   min-height: 260px;
-  padding: 40px 50px;
+  padding: 40px 50px 0px;
 }
 
 /* Input fields */
@@ -33,14 +42,15 @@ window {
   min-width: 205px;
   min-height: 50px;
   padding: 8px 16px;
+  background-color: var(--input-bg);
+  border-right: 1px solid var(--input-border);
+  border-bottom: 1px solid var(--input-border);
+  border-radius: var(--input-radius);
 }
 
 .password-entry {
-  caret-color: #c2fcff;
-  color: #c2fcff;
-}
-
-.password-entry:focus {
+  caret-color: var(--text-color);
+  color: var(--text-color);
   outline: none;
 }
 
@@ -51,17 +61,24 @@ window {
   padding: 0;
 }
 
+.username-display {
+  color: var(--text-color);
+  font-family: var(--font-family);
+  font-size: var(--font-size);
+  font-weight: var(--font-weight);
+}
+
 .username-option {
   padding: 8px 16px;
 }
 
 /* Power button */
 .power-button {
-  background-color: rgba(204, 204, 204, 0.1);
-  border-right: 1px solid #83d4ff;
-  border-bottom: 1px solid #83d4ff;
+  background: radial-gradient(at 10% 10%, rgba(204, 204, 204, 0.08) 30%, rgba(204, 204, 204, 0.25));
+  border-right: 1px solid var(--panel-border);
+  border-bottom: 1px solid var(--panel-border);
   border-radius: 50%;
-  box-shadow: 6px 6px 4px rgba(0, 0, 0, 0.25);
+  box-shadow: var(--panel-shadow);
   min-width: 67px;
   min-height: 67px;
   padding: 0;
@@ -72,10 +89,12 @@ window {
 }
 
 .power-icon {
+  color: var(--text-color);
   font-size: 32px;
 }
 
 /* Error label */
 .error-label {
   font-size: 14px;
+  color: var(--error-color);
 }
