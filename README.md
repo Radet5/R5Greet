@@ -35,7 +35,7 @@ Configure greetd to launch R5Greet via Hyprland in `/etc/greetd/config.toml`:
 
 ```toml
 [default_session]
-command = "Hyprland -c /etc/greetd/r5greet-hyprland.conf"
+command = "start-hyprland -- -c /etc/greetd/r5greet-hyprland.conf"
 ```
 
 ## Configuration
