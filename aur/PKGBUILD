@@ -1,0 +1,41 @@
+# Maintainer: Radet5
+pkgname=r5greet-git
+pkgver=r0.0000000
+pkgrel=1
+pkgdesc="AGS v2 greetd greeter with glassmorphism"
+arch=('x86_64')
+url="https://github.com/Radet5/R5Greet"
+license=('GPL-3.0-only')
+depends=(
+  'aylurs-gtk-shell-git'
+  'libastal-4-git'
+  'libastal-io-git'
+  'libastal-greetd-git'
+  'greetd'
+)
+optdepends=(
+  'hyprland: compositor for greeter session'
+  'ttf-chakra-petch: default UI font'
+)
+provides=('r5greet')
+conflicts=('r5greet')
+backup=('etc/r5greet/config.toml')
+source=("git+https://github.com/Radet5/R5Greet.git")
+sha256sums=('SKIP')
+
+pkgver() {
+  cd R5Greet
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+build() {
+  cd R5Greet
+  make build
+}
+
+package() {
+  cd R5Greet
+  make DESTDIR="$pkgdir" install
+  make DESTDIR="$pkgdir" install-config
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+}

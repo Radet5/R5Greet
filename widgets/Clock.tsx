@@ -8,7 +8,7 @@ export default function Clock({ config }: { config: R5GreetConfig }) {
     const now = config.clock.timezone
       ? GLib.DateTime.new_now(GLib.TimeZone.new(config.clock.timezone))
       : GLib.DateTime.new_now_local()
-    return now?.format(config.clock.format) ?? ""
+    return now?.format(config.clock.format)?.toUpperCase() ?? ""
   })
 
   return (
