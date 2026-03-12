@@ -1,0 +1,26 @@
+[background]
+path = "/etc/r5greet/background.jpg"
+fit = "cover"
+
+[clock]
+format = "%a %H:%M"
+# timezone = "America/New_York"
+
+[commands]
+poweroff = "systemctl poweroff"
+
+[session]
+command = "uwsm start hyprland-uwsm.desktop"
+env = []
+
+[theme]
+panel_bg = "rgba(204, 204, 204, 0.1)"
+panel_border = "#83d4ff"
+input_bg = "rgba(61, 61, 61, 0.3)"
+input_border = "rgba(131, 212, 255, 0.5)"
+text_color = "#c2fcff"
+font_family = "Aldrich"
+clock_font_family = "Inter"
+
+[users]
+list = ["radet"]

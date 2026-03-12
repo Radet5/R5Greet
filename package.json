@@ -1,0 +1,8 @@
+{
+  "name": "r5greet",
+  "private": true,
+  "dependencies": {
+    "ags": "*",
+    "gnim": "*"
+  }
+}

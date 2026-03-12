@@ -1,0 +1,76 @@
+/* R5Greet — GTK4 CSS */
+
+/* Window */
+window.r5greet {
+  background-color: transparent;
+}
+
+/* Glass panels — base */
+.glass-panel {
+  padding: 20px;
+}
+
+/* Clock panel */
+.clock-panel {
+  min-width: 200px;
+  padding: 18px 24px;
+}
+
+/* Login panel */
+.login-panel {
+  min-width: 500px;
+  min-height: 260px;
+  padding: 40px 50px;
+}
+
+/* Input fields */
+.input-field {
+  min-width: 205px;
+  min-height: 50px;
+  padding: 8px 16px;
+}
+
+.password-entry {
+  caret-color: #c2fcff;
+  color: #c2fcff;
+}
+
+.password-entry:focus {
+  outline: none;
+}
+
+/* Username selector */
+.username-selector {
+  background: none;
+  border: none;
+  padding: 0;
+}
+
+.username-option {
+  padding: 8px 16px;
+}
+
+/* Power button */
+.power-button {
+  background-color: rgba(204, 204, 204, 0.1);
+  border-right: 1px solid #83d4ff;
+  border-bottom: 1px solid #83d4ff;
+  border-radius: 50%;
+  box-shadow: 6px 6px 4px rgba(0, 0, 0, 0.25);
+  min-width: 67px;
+  min-height: 67px;
+  padding: 0;
+}
+
+.power-button:hover {
+  background-color: rgba(204, 204, 204, 0.2);
+}
+
+.power-icon {
+  font-size: 32px;
+}
+
+/* Error label */
+.error-label {
+  font-size: 14px;
+}
