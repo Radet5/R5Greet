@@ -14,6 +14,7 @@ export default function PowerButton({ command }: { command: string }) {
       <image
         class="power-icon"
         iconName="system-shutdown-symbolic"
+        pixelSize={32}
       />
     </button>
   )
