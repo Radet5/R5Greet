@@ -1,7 +1,7 @@
 /* R5Greet — GTK4 CSS */
 
-/* Window */
-window.r5greet {
+/* Windows */
+window {
   background-color: transparent;
 }
 
@@ -12,8 +12,13 @@ window.r5greet {
 
 /* Clock panel */
 .clock-panel {
-  min-width: 200px;
-  padding: 18px 24px;
+  min-width: 240px;
+  min-height: 92px;
+  padding: 0px 24px;
+}
+
+.clock-text {
+  margin-top: 6px;
 }
 
 /* Login panel */

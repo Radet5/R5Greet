@@ -21,6 +21,10 @@ export default function Clock({ config }: { config: R5GreetConfig }) {
       <label
         class="clock-text"
         label={time}
+        halign={Gtk.Align.CENTER}
+        valign={Gtk.Align.CENTER}
+        hexpand
+        vexpand
       />
     </box>
   )
