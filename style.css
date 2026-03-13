@@ -23,7 +23,7 @@ window {
 }
 
 .clock-text {
-  margin-top: 6px;
+  margin-bottom: 6px;
   color: var(--text-color);
   font-family: var(--clock-font-family);
   font-size: var(--clock-font-size);
@@ -46,6 +46,9 @@ window {
   border-right: 1px solid var(--input-border);
   border-bottom: 1px solid var(--input-border);
   border-radius: var(--input-radius);
+  font-family: var(--font-family);
+  font-size: var(--font-size);
+  font-weight: var(--font-weight);
 }
 
 .password-entry {

@@ -28,15 +28,15 @@ export const defaults: R5GreetConfig = {
     input_border: "rgba(131, 212, 255, 0.5)",
     input_radius: "10px",
     text_color: "#c2fcff",
-    font_family: "Chakra Petch",
+    font_family: "Jura",
     font_size: "40px",
     font_weight: "500",
-    clock_font_family: "Chakra Petch",
+    clock_font_family: "Jura",
     clock_font_size: "40px",
     clock_font_weight: "500",
     error_color: "#ff6b6b",
   },
   users: {
-    list: ["radet"],
+    list: [],
   },
 }

@@ -13,7 +13,7 @@ export default function PasswordEntry({
   return (
     <entry
       class="input-field password-entry"
-      placeholderText="Password"
+      // placeholderText="password"
       visibility={false}
       halign={Gtk.Align.CENTER}
       sensitive={sensitive}
