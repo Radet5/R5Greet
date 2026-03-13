@@ -8,9 +8,11 @@ BUILDDIR = build
 ENTRY = app.tsx
 OUT = $(BUILDDIR)/r5greet
 
-.PHONY: all setup build install install-config clean
+.PHONY: all dev setup types build install install-config clean
 
 all: build
+
+dev: setup types
 
 # Create node_modules symlinks for AGS type definitions
 setup:
@@ -19,7 +21,10 @@ setup:
 	@ln -sfn /usr/share/ags/js/node_modules/gnim node_modules/gnim
 	@echo "node_modules symlinks created"
 
-build: setup
+types:
+	ags types -u -d $(CURDIR)
+
+build:
 	@mkdir -p $(BUILDDIR)
 	ags bundle $(ENTRY) $(OUT)
 	@echo "Built $(OUT)"

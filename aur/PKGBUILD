@@ -15,7 +15,7 @@ depends=(
 )
 optdepends=(
   'hyprland: compositor for greeter session'
-  'ttf-chakra-petch: default UI font'
+  'jura-font: default UI font'
 )
 provides=('r5greet')
 conflicts=('r5greet')

@@ -18,15 +18,29 @@ A glassmorphism-styled [greetd](https://sr.ht/~kennylevinsen/greetd/) greeter bu
 - [libastal-4-git](https://aur.archlinux.org/packages/libastal-4-git), [libastal-io-git](https://aur.archlinux.org/packages/libastal-io-git), [libastal-greetd-git](https://aur.archlinux.org/packages/libastal-greetd-git) (AUR)
 - [greetd](https://sr.ht/~kennylevinsen/greetd/)
 - [Hyprland](https://hyprland.org/) 0.54+
-- Fonts: [Inter](https://rsms.me/inter/), [Aldrich](https://fonts.google.com/specimen/Aldrich)
+- Fonts: [Jura](https://aur.archlinux.org/packages/libastal-4-git/jura-font)
+
+## Dev Setup
+
+link node_modules and generate types
+
+```sh
+make dev
+```
 
 ## Install
 
+link node_modules
+
 ```sh
-ags bundle app.tsx r5greet
-sudo install -Dm755 r5greet /usr/bin/r5greet
-sudo install -Dm644 etc/r5greet/config.toml /etc/r5greet/config.toml
-sudo cp hyprland/greetd-hyprland.conf /etc/greetd/r5greet-hyprland.conf
+make setup
+```
+
+Build and install
+
+```sh
+make install
+make install-config
 ```
 
 Place your wallpaper at `/etc/r5greet/background.jpg` (or change the path in config).
@@ -55,7 +69,7 @@ fit = "cover"  # "cover", "contain", or "fill"
 ```toml
 [clock]
 format = "%a %H:%M"
-# timezone = "America/New_York"
+timezone = "America/New_York"
 ```
 
 Format uses [GLib datetime format codes](https://docs.gtk.org/glib/method.DateTime.format.html).
@@ -115,10 +129,10 @@ input_radius = "10px"
 
 # Typography
 text_color = "#c2fcff"
-font_family = "Aldrich"
+font_family = "Jura"
 font_size = "40px"
 font_weight = "500"
-clock_font_family = "Inter"
+clock_font_family = "Jura"
 clock_font_size = "40px"
 clock_font_weight = "500"
 error_color = "#ff6b6b"
@@ -144,4 +158,4 @@ custom_css = ".login-panel { min-width: 600px; }"
 
 ## License
 
-MIT
+GPL 3.0
