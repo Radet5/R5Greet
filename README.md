@@ -18,7 +18,7 @@ A glassmorphism-styled [greetd](https://sr.ht/~kennylevinsen/greetd/) greeter bu
 - [libastal-4-git](https://aur.archlinux.org/packages/libastal-4-git), [libastal-io-git](https://aur.archlinux.org/packages/libastal-io-git), [libastal-greetd-git](https://aur.archlinux.org/packages/libastal-greetd-git) (AUR)
 - [greetd](https://sr.ht/~kennylevinsen/greetd/)
 - [Hyprland](https://hyprland.org/) 0.54+
-- Fonts: [Jura](https://aur.archlinux.org/packages/libastal-4-git/jura-font)
+- Fonts: [Jura](https://aur.archlinux.org/packages/jura-font)
 
 ## Dev Setup
 
