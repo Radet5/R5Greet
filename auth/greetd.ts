@@ -1,4 +1,6 @@
 import GLib from "gi://GLib?version=2.0"
+import Greet from "gi://AstalGreet"
+import Gio from "gi://Gio?version=2.0"
 
 const isMock = !GLib.getenv("GREETD_SOCK")
 
@@ -9,26 +11,24 @@ function greetdLogin(
   env: string[],
 ): Promise<string | null> {
   return new Promise((resolve) => {
-    import("gi://AstalGreet?version=0.1").then(({ default: Greet }) => {
-      const callback = (_: any, res: any) => {
-        try {
-          if (env.length > 0) {
-            Greet.login_with_env_finish(res)
-          } else {
-            Greet.login_finish(res)
-          }
-          resolve(null)
-        } catch (e: any) {
-          resolve(e?.message || String(e))
+    const callback: Gio.AsyncReadyCallback<string> = (_, res) => {
+      try {
+        if (env.length > 0) {
+          Greet.login_with_env_finish(res)
+        } else {
+          Greet.login_finish(res)
         }
+        resolve(null)
+      } catch (e: any) {
+        resolve(e?.message || String(e))
       }
+    }
 
-      if (env.length > 0) {
-        Greet.login_with_env(username, password, command, env, callback)
-      } else {
-        Greet.login(username, password, command, callback)
-      }
-    })
+    if (env.length > 0) {
+      Greet.login_with_env(username, password, command, env, callback)
+    } else {
+      Greet.login(username, password, command, callback)
+    }
   })
 }
 
