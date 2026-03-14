@@ -51,6 +51,6 @@ app.start({
   instanceName: "r5greet",
   css: generateThemeCss(config.theme) + style,
   main() {
-    GreeterWindow({ config })
+    <GreeterWindow config={config} />
   },
 })

@@ -50,6 +50,8 @@ function PanelsWindow({ config }: { config: R5GreetConfig }) {
 }
 
 export default function GreeterWindow({ config }: { config: R5GreetConfig }) {
-  BackgroundWindow({ config })
-  PanelsWindow({ config })
+  return <>
+    <BackgroundWindow config={config} />
+    <PanelsWindow config={config} />
+  </>
 }

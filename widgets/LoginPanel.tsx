@@ -15,9 +15,9 @@ export default function LoginPanel({ config }: { config: R5GreetConfig }) {
   const hasError = createComputed(() => error() !== "")
 
   async function handleLogin(password: string) {
-    if (busy()) return
-    setError("")
-    setBusy(true)
+    if (busy()) return;
+    setError("");
+    setBusy(true);
 
     const result = await login(
       selectedUser.peek(),
@@ -27,11 +27,10 @@ export default function LoginPanel({ config }: { config: R5GreetConfig }) {
     )
 
     if (result) {
-      setError(result)
-      setBusy(false)
+      setError(result.includes("AUTH_ERR") ? "Incorrect password" : result);
+      setBusy(false);
     } else {
-      // Greeter must exit so greetd can start the user session
-      app.quit()
+      app.quit();
     }
   }
 
