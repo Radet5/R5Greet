@@ -1,7 +1,7 @@
 import app from "ags/gtk4/app"
 import { Astal, Gtk } from "ags/gtk4"
 import { type R5GreetConfig } from "../config/types"
-import Background from "./Background"
+import { Background } from "./Background"
 import Clock from "./Clock"
 import LoginPanel from "./LoginPanel"
 import PowerMenu from "./PowerMenu"

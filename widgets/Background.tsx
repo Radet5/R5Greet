@@ -8,16 +8,39 @@ const fitMap: Record<string, Gtk.ContentFit> = {
   fill: Gtk.ContentFit.FILL,
 }
 
-export default function Background({ config }: { config: R5GreetConfig }) {
+export const Background = ({ config }: { config: R5GreetConfig }) => {
+  const { background: { path, fit } } = config;
+
+  const isVideo = /\.(mp4|webm|gif|mkv|avi)$/i.test(path)
+
+  if (isVideo) {
+    const media = Gtk.MediaFile.new_for_filename(path);
+    media.loop = true;
+    media.muted = true;
+    media.play();
+
+    return (
+      <Gtk.Picture
+        paintable={media}
+        contentFit={fitMap[fit] ?? Gtk.ContentFit.COVER}
+        canShrink={true}
+        halign={Gtk.Align.FILL}
+        valign={Gtk.Align.FILL}
+        hexpand={true}
+        vexpand={true}
+      />
+    );
+  }
+
   return (
     <Gtk.Picture
-      file={Gio.File.new_for_path(config.background.path)}
-      contentFit={fitMap[config.background.fit] ?? Gtk.ContentFit.COVER}
+      file={Gio.File.new_for_path(path)}
+      contentFit={fitMap[fit] ?? Gtk.ContentFit.COVER}
       canShrink={true}
       halign={Gtk.Align.FILL}
       valign={Gtk.Align.FILL}
       hexpand={true}
       vexpand={true}
     />
-  )
+  );
 }

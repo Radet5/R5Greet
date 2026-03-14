@@ -7,7 +7,6 @@ window {
 
 /* Glass panels */
 .glass-panel {
-  padding: 20px;
   background: var(--panel-bg);
   border-right: 1px solid var(--panel-border);
   border-bottom: 1px solid var(--panel-border);
@@ -34,7 +33,10 @@ window {
 .login-panel {
   min-width: 500px;
   min-height: 260px;
-  padding: 40px 50px 0px;
+}
+
+.login-panel-inner {
+  padding: 30px 20px 10px;
 }
 
 /* Input fields */

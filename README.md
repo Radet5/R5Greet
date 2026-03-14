@@ -1,6 +1,6 @@
 # R5Greet
 
-A glassmorphism-styled [greetd](https://sr.ht/~kennylevinsen/greetd/) greeter built with [AGS v2](https://github.com/Aylur/ags) (Astal + TypeScript/TSX) for Hyprland.
+A glassmorphism-styled [greetd](https://sr.ht/~kennylevinsen/greetd/) greeter built with [AGS v3](https://github.com/Aylur/ags) (Astal + TypeScript/TSX) for Hyprland.
 
 ## Features
 

@@ -2,7 +2,7 @@
 pkgname=r5greet-git
 pkgver=r0.0000000
 pkgrel=1
-pkgdesc="AGS v2 greetd greeter with glassmorphism"
+pkgdesc="AGS v3 greetd greeter with glassmorphism"
 arch=('x86_64')
 url="https://github.com/Radet5/R5Greet"
 license=('GPL-3.0-only')
@@ -12,6 +12,10 @@ depends=(
   'libastal-io-git'
   'libastal-greetd-git'
   'greetd'
+  'gstreamer'
+  'gst-plugins-base-libs'
+  'gst-plugins-good'
+  'gst-libav'
 )
 optdepends=(
   'hyprland: compositor for greeter session'

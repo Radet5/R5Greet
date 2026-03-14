@@ -34,29 +34,55 @@ export default function LoginPanel({ config }: { config: R5GreetConfig }) {
     }
   }
 
+    // const media = Gtk.MediaFile.new_for_filename("/etc/r5greet/background.mkv");
+    // media.loop = true;
+    // media.muted = true;
+    // media.play();
+
   return (
     <box
       class="glass-panel login-panel"
-      orientation={Gtk.Orientation.VERTICAL}
       halign={Gtk.Align.CENTER}
       valign={Gtk.Align.CENTER}
-      spacing={45}
+      overflow={Gtk.Overflow.HIDDEN}
     >
-      <UsernameSelector
-        users={users}
-        selected={selectedUser}
-        onSelect={setSelectedUser}
-      />
-      <PasswordEntry
-        onSubmit={handleLogin}
-        sensitive={notBusy}
-      />
-      <label
-        class="error-label"
-        label={error}
-        visible={hasError}
-        halign={Gtk.Align.CENTER}
-      />
+      <overlay>
+        <box class="login-panel" />
+        {
+        // <Gtk.Picture
+        //   $type="overlay"
+        //   paintable={media}
+        //   contentFit={Gtk.ContentFit.COVER}
+        //   canShrink={true}
+        //   halign={Gtk.Align.FILL}
+        //   valign={Gtk.Align.FILL}
+        // />
+        }
+        <box
+          $type="overlay"
+          class="login-panel-inner"
+          orientation={Gtk.Orientation.VERTICAL}
+          spacing={45}
+          hexpand={true}
+          vexpand={true}
+        >
+          <UsernameSelector
+            users={users}
+            selected={selectedUser}
+            onSelect={setSelectedUser}
+          />
+          <PasswordEntry
+            onSubmit={handleLogin}
+            sensitive={notBusy}
+          />
+          <label
+            class="error-label"
+            label={error}
+            visible={hasError}
+            halign={Gtk.Align.CENTER}
+          />
+        </box>
+      </overlay>
     </box>
   )
 }
